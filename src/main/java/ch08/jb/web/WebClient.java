@@ -3,13 +3,12 @@ package ch08.jb.web;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class WebClient {
-	public String getContent(URL url) {
+	public String getContent(MockURL mockURL) {
 		StringBuffer content = new StringBuffer();
 		try {
-			HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+			HttpURLConnection connection = (HttpURLConnection)mockURL.openConnection();
 			connection.setDoInput(true);
 			InputStream is = connection.getInputStream();
 			int count;
