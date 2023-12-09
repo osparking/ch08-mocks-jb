@@ -14,29 +14,15 @@ import org.junit.jupiter.api.Test;
 class WebClientTest {
 
 	@Test
-	@DisplayName("메소드 팩토리 사용 final URL 우회ㅅ")
+	@DisplayName("연결 공장 사용으로 편하게 URL 종속 메소드 시험")
 	void testGetContent() throws MalformedURLException {
-		MockHttpURLConnection mockConn = new MockHttpURLConnection();
-		mockConn
-				.setupGetInputStream(new ByteArrayInputStream("It works".getBytes()));
-		TestableWebClient client = new TestableWebClient();
-		client.setHttpURLConnection(mockConn);
-		String workingContent = client.getContent(new URL("http://localhost"));
+		MockConnectionFactory factory = new MockConnectionFactory();
+		factory.setInputStream(new ByteArrayInputStream("It works".getBytes()));
+		
+		WebClient2 client = new WebClient2();
+		String workingContent = client.getContent(factory);
+		
 		assertEquals("It works", workingContent);
-	}
-
-	private class TestableWebClient extends WebClient1 {
-		private HttpURLConnection connection;
-
-		public void setHttpURLConnection(HttpURLConnection connection) {
-			this.connection = connection;
-		}
-
-		@Override
-		protected HttpURLConnection createHttpURLConnection(URL url)
-				throws IOException {
-			return this.connection;
-		}
 	}
 }
 
