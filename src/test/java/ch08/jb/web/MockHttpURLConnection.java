@@ -5,25 +5,38 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class MockHttpURLConnection {
+public class MockHttpURLConnection extends HttpURLConnection{
+
+	public MockHttpURLConnection() {
+		super(null);
+	}
+	
+	protected MockHttpURLConnection(URL u) {
+		super(u);
+		// TODO Auto-generated constructor stub
+	}
 
 	public void setupGetInputStream(ByteArrayInputStream byteArrayInputStream) {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	private class TestableWebClient extends WebClient1 {
-		private HttpURLConnection connection;
 
-		public void setHttpURLConnection(HttpURLConnection connection) {
-			this.connection = connection;
-		}
+	@Override
+	public void disconnect() {
+		// TODO Auto-generated method stub
+		
+	}
 
-		@Override
-		protected HttpURLConnection createHttpURLConnection(URL url)
-				throws IOException {
-			return this.connection;
-		}
+	@Override
+	public boolean usingProxy() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void connect() throws IOException {
+		// TODO Auto-generated method stub
+		
 	}
 }
 
