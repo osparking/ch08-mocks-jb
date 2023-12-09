@@ -8,11 +8,13 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class WebClientTest {
 
 	@Test
+	@DisplayName("메소드 팩토리 사용 final URL 우회ㅅ")
 	void testGetContent() throws MalformedURLException {
 		MockHttpURLConnection mockConn = new MockHttpURLConnection();
 		mockConn
