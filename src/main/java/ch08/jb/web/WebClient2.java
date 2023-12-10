@@ -2,6 +2,7 @@ package ch08.jb.web;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
 
 public class WebClient2 {
 	public String getContent(ConnectionFactory connection) {
@@ -9,11 +10,9 @@ public class WebClient2 {
 		StringBuffer content = new StringBuffer();
 		
 		try(InputStream is = connection.getData()) {
-			int count;
-			while (-1 != (count = is.read())) {
-				content.append(new String(Character.toChars(count)));
-			}
-			workingContent = content.toString();
+			byte[] bytes = new byte[is.available()];
+			is.read(bytes);
+			workingContent = new String(bytes, Charset.forName("UTF8"));
 		} catch (IOException e) {
 		} catch (Exception e) {
 		}
