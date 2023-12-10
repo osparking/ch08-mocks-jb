@@ -20,6 +20,21 @@
 			<artifactId>commons-logging</artifactId>
 			<version>1.3.0</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.easymock/easymock -->
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>5.2.0</version>
+			<scope>test</scope>
+		</dependency>
+		<!--
+		https://mvnrepository.com/artifact/org.easymock/easymockclassextension -->
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymockclassextension</artifactId>
+			<version>3.2</version>
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 </project>
